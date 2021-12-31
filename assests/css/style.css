@@ -61,9 +61,146 @@ a { text-decoration: none; }
 
 /* =============== REUSABLE CLASSES =============== */
 .container {
-  min-width: 968px;
+  max-width: 968px;
   margin-right: var(--mb-1);
   margin-left: var(--mb-1);
 }
 
 .grid { display: grid; }
+
+/* =============== CLOCK CSS =============== */
+.clock__container {
+  height: 100vh;
+  grid-template-rows: 1fr max-content;
+}
+
+.clock__circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: -6px -6px 16px var(--white-color),
+    6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+    inset 6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+    inset -6px -6px 16px var(--white-color);
+  justify-self: center;
+}
+
+.clock__content {
+  align-self: center;
+  row-gap: 3.5rem;
+}
+
+.clock__twelve,
+.clock__three,
+.clock__six,
+.clock__nine {
+  position: absolute;
+  width: 1rem;
+  height: 1px;
+  background-color: var(--text-color-light);
+}
+
+.clock__twelve,
+.clock__six {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.clock__twelve {
+  top: 1.25rem;
+  left: 50%;
+}
+
+.clock__six {
+  bottom: 1.25rem;
+  left: 50%;
+}
+
+.clock__three {
+  top: 50%;
+  right: 0.75rem;
+}
+
+.clock__nine {
+  top: 50%;
+  left: 0.75rem;
+}
+
+.clock__rounder {
+  z-index: var(--z-tooltip);
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--first-color);
+  border: 2px solid var(--body-color);
+  border-radius: 50%;
+}
+
+.clock__hour,
+.clock__minutes,
+.clock__seconds {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+
+.clock__hour {
+  width: 105px;
+  height: 105px;
+}
+
+.clock__hour::before {
+  position: absolute;
+  z-index: var(--z-normal);
+  width: 0.25rem;
+  height: 3rem;
+  content: "";
+  background-color: var(--text-color);
+  border-radius: 0.75rem;
+}
+
+.clock__minutes {
+  width: 136px;
+  height: 136px;
+}
+
+.clock__minutes::before {
+  position: absolute;
+  z-index: var(--z-normal);
+  width: 0.25rem;
+  height: 4rem;
+  content: "";
+  background-color: #00f;
+  border-radius: 0.75rem;
+}
+
+.clock__seconds {
+  width: 130px;
+  height: 130px;
+}
+
+.clock__seconds::before {
+  position: absolute;
+  z-index: var(--z-normal);
+  width: 0.125rem;
+  height: 5rem;
+  content: "";
+  background-color: var(--first-color);
+  border-radius: 0.75rem;
+}
+
+.clock__logo {
+  width: max-content;
+  justify-self: center;
+  margin-bottom: var(--mb-2-5);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color-light);
+  transition: 0.3s;
+}
+
+.clock__logo:hover {
+  color: var(--first-color);
+}
