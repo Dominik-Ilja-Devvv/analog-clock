@@ -3,6 +3,7 @@
 /* Poppins | font-family: 'Poppins', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
+
 /* =============== CSS VARIABLES =============== */
 :root {
   /* ======== Color Variables ======== */
@@ -33,7 +34,6 @@
   --z-normal: 1;
   --z-tooltip: 10;
 }
-
 @media screen and (min-width: 986px) {
   :root {
     --biggest-font-size: 3.5rem;
@@ -49,15 +49,14 @@
   padding: 0;
   margin: 0;
 }
-
 body {
   margin: 0;
   font-family: var(--body-font);
   color: var(--text-color);
   background-color: var(--body-color);
 }
-
 a { text-decoration: none; }
+
 
 /* =============== REUSABLE CLASSES =============== */
 .container {
@@ -65,15 +64,33 @@ a { text-decoration: none; }
   margin-right: var(--mb-1);
   margin-left: var(--mb-1);
 }
-
 .grid { display: grid; }
+
+
+/* =============== DARK / LIGHT THEME BUTTON =============== */
+.clock__theme {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  display: flex;
+  padding: 0.25rem;
+  color: var(--first-color);
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1),
+    inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+}
+
 
 /* =============== CLOCK CSS =============== */
 .clock__container {
   height: 100vh;
   grid-template-rows: 1fr max-content;
 }
-
+.clock__content {
+  align-self: center;
+  row-gap: 3.5rem;
+}
 .clock__circle {
   position: relative;
   display: flex;
@@ -89,48 +106,33 @@ a { text-decoration: none; }
   justify-self: center;
 }
 
-.clock__content {
-  align-self: center;
-  row-gap: 3.5rem;
-}
-
 
 /* Clock Hands & Dial */
-.clock__twelve,
-.clock__three,
-.clock__six,
-.clock__nine {
+.clock__twelve, .clock__three, .clock__six, .clock__nine {
   position: absolute;
   width: 1rem;
   height: 1px;
   background-color: var(--text-color-light);
 }
-
-.clock__twelve,
-.clock__six {
+.clock__twelve, .clock__six {
   transform: translateX(-50%) rotate(90deg);
 }
-
 .clock__twelve {
   top: 1.25rem;
   left: 50%;
 }
-
 .clock__six {
   bottom: 1.25rem;
   left: 50%;
 }
-
 .clock__three {
   top: 50%;
   right: 0.75rem;
 }
-
 .clock__nine {
   top: 50%;
   left: 0.75rem;
 }
-
 .clock__rounder {
   z-index: var(--z-tooltip);
   width: 0.75rem;
@@ -139,20 +141,15 @@ a { text-decoration: none; }
   border: 2px solid var(--body-color);
   border-radius: 50%;
 }
-
-.clock__hour,
-.clock__minutes,
-.clock__seconds {
+.clock__hour, .clock__minutes, .clock__seconds {
   position: absolute;
   display: flex;
   justify-content: center;
 }
-
 .clock__hour {
   width: 105px;
   height: 105px;
 }
-
 .clock__hour::before {
   position: absolute;
   z-index: var(--z-normal);
@@ -162,12 +159,10 @@ a { text-decoration: none; }
   background-color: var(--text-color);
   border-radius: 0.75rem;
 }
-
 .clock__minutes {
   width: 136px;
   height: 136px;
 }
-
 .clock__minutes::before {
   position: absolute;
   z-index: var(--z-normal);
@@ -177,12 +172,10 @@ a { text-decoration: none; }
   background-color: #00f;
   border-radius: 0.75rem;
 }
-
 .clock__seconds {
   width: 130px;
   height: 130px;
 }
-
 .clock__seconds::before {
   position: absolute;
   z-index: var(--z-normal);
@@ -193,19 +186,17 @@ a { text-decoration: none; }
   border-radius: 0.75rem;
 }
 
+
 /* Digital Clock */
 .clock__text {
   display: flex;
   justify-content: center;
 }
-.clock__text-hours,
-.clock__text-minutes,
-.clock__text-seconds {
+.clock__text-hours, .clock__text-minutes, .clock__text-seconds {
   font-size: var(--biggest-font-size);
   font-weight: var(--font-medium);
   color: var(--title-color);
 }
-
 .clock__text-ampm {
   margin-left: var(--mb-0-25);
   font-size: var(--tiny-font-size);
@@ -213,12 +204,14 @@ a { text-decoration: none; }
   color: var(--title-color);
 }
 
+
 /* Clock Date */
 .clock__date {
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   text-align: center;
 }
+
 
 /* Clock Endorsement Link */
 .clock__logo {
@@ -230,7 +223,35 @@ a { text-decoration: none; }
   color: var(--text-color-light);
   transition: 0.3s;
 }
-
 .clock__logo:hover {
   color: var(--first-color);
+}
+
+/* =============== DARK THEME =============== */
+body.dark-theme {
+  --title-color: hsl(var(--hue-color), 12%, 95%);
+  --text-color: hsl(var(--hue-color), 12%, 75%);
+  --body-color: hsl(var(--hue-color), 10%, 16%);
+}
+.dark-theme .clock__circle {
+  box-shadow: 6px 6px 16px hsla(var(--hue-color), 8%, 12%, 1),
+    -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
+    inset -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
+    inset 6px 6px 12px hsla(var(--hue-color), 8%, 12%, 1);
+}
+.dark-theme .clock__theme {
+  box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1),
+    inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+}
+
+/* =============== MEDIA QUERIES =============== */
+@media screen and (min-width: 968px) {
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .clock__logo {
+    margin-bottom: 3rem;
+  }
 }
