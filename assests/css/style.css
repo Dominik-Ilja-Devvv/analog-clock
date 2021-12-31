@@ -42,3 +42,28 @@
     --tiny-font-size: 0.75rem;
   }
 }
+
+/* =============== RESET =============== */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--body-color);
+}
+
+a { text-decoration: none; }
+
+/* =============== REUSABLE CLASSES =============== */
+.container {
+  min-width: 968px;
+  margin-right: var(--mb-1);
+  margin-left: var(--mb-1);
+}
+
+.grid { display: grid; }
