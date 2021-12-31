@@ -94,6 +94,8 @@ a { text-decoration: none; }
   row-gap: 3.5rem;
 }
 
+
+/* Clock Hands & Dial */
 .clock__twelve,
 .clock__three,
 .clock__six,
@@ -191,6 +193,34 @@ a { text-decoration: none; }
   border-radius: 0.75rem;
 }
 
+/* Digital Clock */
+.clock__text {
+  display: flex;
+  justify-content: center;
+}
+.clock__text-hours,
+.clock__text-minutes,
+.clock__text-seconds {
+  font-size: var(--biggest-font-size);
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+}
+
+.clock__text-ampm {
+  margin-left: var(--mb-0-25);
+  font-size: var(--tiny-font-size);
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+}
+
+/* Clock Date */
+.clock__date {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+
+/* Clock Endorsement Link */
 .clock__logo {
   width: max-content;
   justify-self: center;
